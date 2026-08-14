@@ -19,6 +19,7 @@
     "group/sysinfo",
     "group/network",
     "pulseaudio",
+    "pulseaudio#microphone",
     "idle_inhibitor",
     "battery",
     "custom/notifications",
@@ -290,41 +291,39 @@
         "tooltip": "Power menu",
 
         "on-click": "bash -c 'choice=$(printf \"󰐥 Shutdown\\n󰜉 Reboot\\n󰍃 Logout\\n󰒲 Suspend\" | rofi -dmenu -i -p \"Power\"); case \"$choice\" in *Shutdown) systemctl poweroff ;; *Reboot) systemctl reboot ;; *Logout) hyprctl dispatch exit ;; *Suspend) systemctl suspend ;; esac'"
-    }
-}
+    },
 
 // ─────────────────────────
 // AUDIO
 // ─────────────────────────
 
 "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰖁 Muted",
-    "tooltip": false,
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 Muted",
+        "tooltip": false,
 
-    "format-icons": {
-        "default": [
-            "󰕿",
-            "󰖀",
-            "󰕾"
-        ]
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "wpctl status",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     },
 
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-right": "pavucontrol",
-    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-},
+    "pulseaudio#microphone": {
+        "format": "󰍬 {format_source}",
+        "format-source": "{volume}%",
+        "format-source-muted": "󰍭 Muted",
+        "tooltip": false,
 
-"pulseaudio#microphone": {
-    "format": "󰍬 {format_source}",
-    "format-source": "{volume}%",
-    "format-source-muted": "󰍭 Muted",
-    "tooltip": false,
-
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-    "on-click-right": "pavucontrol",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+    }
 }
-
