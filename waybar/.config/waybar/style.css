@@ -1,0 +1,287 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    min-height: 0;
+}
+
+/* =========================
+   MAIN WAYBAR
+   ========================= */
+
+window#waybar {
+    background: rgba(26, 27, 38, 0.55);
+    color: #c0caf5;
+    border-radius: 12px;
+}
+
+
+/* =========================
+   TOOLTIPS
+   ========================= */
+
+tooltip {
+    background: #1a1b26;
+    border: 1px solid rgba(122, 162, 247, 0.2);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+tooltip label {
+    font-size: 12px;
+    color: #c0caf5;
+}
+
+
+/* =========================
+   WORKSPACES
+   ========================= */
+
+#workspaces {
+    background: rgba(36, 40, 59, 0.6);
+    padding: 1px 5px;
+    border-radius: 10px;
+    margin: 4px 3px 4px 6px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #7aa2f7;
+    background: transparent;
+    border-radius: 7px;
+    margin: 1px;
+}
+
+#workspaces button.active {
+    background: #7aa2f7;
+    color: #1a1b26;
+    padding: 0 7px;
+}
+
+#workspaces button:hover {
+    background: rgba(122, 162, 247, 0.3);
+    color: #c0caf5;
+}
+
+
+/* =========================
+   CAVA
+   ========================= */
+
+#cava {
+    background: rgba(36, 40, 59, 0.6);
+    color: #bb9af7;
+    padding: 0 8px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   CLOCK
+   ========================= */
+
+#clock {
+    background: rgba(36, 40, 59, 0.6);
+    color: #bb9af7;
+    padding: 0 9px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   SYSTEM INFO GROUP
+   ========================= */
+
+#group-sysinfo {
+    background: rgba(36, 40, 59, 0.6);
+    padding: 0 5px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+#custom-cpu-icon,
+#custom-memory-icon,
+#custom-disk-icon {
+    padding: 0 2px;
+}
+
+#cpu,
+#memory,
+#disk {
+    padding: 0 2px;
+}
+
+#custom-cpu-icon {
+    color: #7aa2f7;
+}
+
+#custom-memory-icon {
+    color: #bb9af7;
+}
+
+#custom-disk-icon {
+    color: #9ece6a;
+}
+
+
+/* =========================
+   NETWORK GROUP
+   ========================= */
+
+#group-network {
+    background: rgba(36, 40, 59, 0.6);
+    padding: 0 5px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+#network {
+    color: #7dcfff;
+    padding: 0 3px;
+}
+
+#network-speed {
+    color: #9ece6a;
+    padding: 0 3px;
+}
+
+
+/* =========================
+   CAFFEINE
+   ========================= */
+
+#idle_inhibitor {
+    background: rgba(36, 40, 59, 0.6);
+    color: #e0af68;
+    padding: 0 8px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+#idle_inhibitor.activated {
+    color: #9ece6a;
+}
+
+
+/* =========================
+   BATTERY
+   ========================= */
+
+#battery {
+    background: rgba(36, 40, 59, 0.6);
+    color: #7dcfff;
+    padding: 0 8px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f7768e;
+        color: #1a1b26;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #f7768e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+/* =========================
+   NOTIFICATIONS
+   ========================= */
+
+#custom-notifications {
+    background: rgba(36, 40, 59, 0.6);
+    color: #f7768e;
+    padding: 0 8px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   POWER
+   ========================= */
+
+#custom-power {
+    background: rgba(36, 40, 59, 0.6);
+    color: #f7768e;
+    padding: 0 8px;
+    margin: 4px 6px 4px 3px;
+    border-radius: 10px;
+}
+
+#custom-power:hover {
+    background: rgba(247, 118, 142, 0.2);
+    color: #ff9eae;
+}
+/* =========================
+   AUDIO
+   ========================= */
+
+#pulseaudio {
+    background: rgba(36, 40, 59, 0.6);
+    color: #7aa2f7;
+    padding: 0 8px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+#pulseaudio:hover {
+    background: rgba(122, 162, 247, 0.15);
+    color: #89b4fa;
+}
+
+
+/* =========================
+   MICROPHONE
+   ========================= */
+
+#pulseaudio.microphone {
+    background: rgba(36, 40, 59, 0.6);
+    color: #bb9af7;
+    padding: 0 8px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+#pulseaudio.microphone:hover {
+    background: rgba(187, 154, 247, 0.15);
+    color: #c6a0f6;
+}
+
+
+/* =========================
+   AUDIO MUTED
+   ========================= */
+
+#pulseaudio.muted {
+    color: #f7768e;
+}
+
+#pulseaudio.microphone.source-muted {
+    color: #f7768e;
+}
+
+
+/* =========================
+   AUDIO + MIC GROUP
+   ========================= */
+
+#group-audio {
+    background: rgba(36, 40, 59, 0.6);
+    padding: 0 5px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+

@@ -9,7 +9,7 @@ local mainMod = "SUPER"
 -- Applications
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(programs.terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(programs.filemanager))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(programs.menu))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(programs.menu))
 
 -- Window management
 hl.bind(mainMod .. " + C", hl.dsp.window.close())

@@ -9,7 +9,7 @@
 local programs = {
 	terminal = "kitty",
 	filemanager = "dolphin",
-	menu = "wofi",
+	menu = "rofi -show drun",
 }
 
 return programs

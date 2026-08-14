@@ -1,0 +1,44 @@
+* {
+    background-color: #1e1e2e;
+    text-color: #cdd6f4;
+}
+
+window {
+    width: 600px;
+    background-color: #1e1e2e;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    padding: 10px;
+}
+
+prompt {
+    text-color: #cba6f7;
+}
+
+entry {
+    text-color: #cdd6f4;
+}
+
+listview {
+    lines: 6;
+    spacing: 5px;
+}
+
+element {
+    padding: 10px;
+}
+
+element-text {
+    text-color: #cdd6f4;
+}
+
+element selected.normal {
+    background-color: #cba6f7;
+    text-color: #1e1e2e;
+}
