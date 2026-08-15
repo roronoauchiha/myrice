@@ -7,6 +7,7 @@
     min-height: 0;
 }
 
+
 /* =========================
    MAIN WAYBAR
    ========================= */
@@ -94,6 +95,7 @@ tooltip label {
 
 /* =========================
    SYSTEM INFO GROUP
+   CPU / RAM / DISK
    ========================= */
 
 #group-sysinfo {
@@ -151,33 +153,119 @@ tooltip label {
 
 
 /* =========================
-   CAFFEINE
+   AUDIO GROUP
+   SOUND + MICROPHONE
    ========================= */
 
-#idle_inhibitor {
+#group-audio {
     background: rgba(36, 40, 59, 0.6);
-    color: #e0af68;
-    padding: 0 8px;
+    padding: 0 5px;
     margin: 4px 3px;
     border-radius: 10px;
 }
 
-#idle_inhibitor.activated {
-    color: #9ece6a;
+
+/* Main collapsed sound icon */
+
+#custom-audio-icon {
+    color: #7aa2f7;
+    padding: 0 4px;
+    font-size: 13px;
+}
+
+#custom-audio-icon:hover {
+    color: #89b4fa;
+}
+
+
+/* Sound */
+
+#pulseaudio {
+    background: transparent;
+    color: #7aa2f7;
+    padding: 0 3px;
+    margin: 0;
+}
+
+#pulseaudio:hover {
+    color: #89b4fa;
+}
+
+
+/* Microphone */
+
+#pulseaudio.microphone {
+    background: transparent;
+    color: #bb9af7;
+    padding: 0 3px;
+    margin: 0;
+}
+
+#pulseaudio.microphone:hover {
+    color: #c6a0f6;
+}
+
+
+/* Muted */
+
+#pulseaudio.muted {
+    color: #f7768e;
+}
+
+#pulseaudio.microphone.source-muted {
+    color: #f7768e;
 }
 
 
 /* =========================
-   BATTERY
+   BATTERY + BRIGHTNESS GROUP
    ========================= */
 
-#battery {
+#group-powerinfo {
     background: rgba(36, 40, 59, 0.6);
-    color: #7dcfff;
-    padding: 0 8px;
+    padding: 0 5px;
     margin: 4px 3px;
     border-radius: 10px;
 }
+
+
+/* Battery icon */
+
+#custom-battery-icon {
+    color: #7dcfff;
+    padding: 0 3px;
+}
+
+#custom-battery-icon:hover {
+    color: #89dceb;
+}
+
+
+/* Battery */
+
+#battery {
+    background: transparent;
+    color: #7dcfff;
+    padding: 0 3px;
+    margin: 0;
+}
+
+
+/* Brightness */
+
+#backlight {
+    background: transparent;
+    color: #e0af68;
+    padding: 0 3px;
+    margin: 0;
+}
+
+#backlight:hover {
+    color: #ffcc85;
+}
+
+
+/* Critical battery */
 
 @keyframes blink {
     to {
@@ -193,6 +281,23 @@ tooltip label {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+
+/* =========================
+   CAFFEINE
+   ========================= */
+
+#idle_inhibitor {
+    background: rgba(36, 40, 59, 0.6);
+    color: #e0af68;
+    padding: 0 8px;
+    margin: 4px 3px;
+    border-radius: 10px;
+}
+
+#idle_inhibitor.activated {
+    color: #9ece6a;
 }
 
 
@@ -224,64 +329,5 @@ tooltip label {
 #custom-power:hover {
     background: rgba(247, 118, 142, 0.2);
     color: #ff9eae;
-}
-/* =========================
-   AUDIO
-   ========================= */
-
-#pulseaudio {
-    background: rgba(36, 40, 59, 0.6);
-    color: #7aa2f7;
-    padding: 0 8px;
-    margin: 4px 3px;
-    border-radius: 10px;
-}
-
-#pulseaudio:hover {
-    background: rgba(122, 162, 247, 0.15);
-    color: #89b4fa;
-}
-
-
-/* =========================
-   MICROPHONE
-   ========================= */
-
-#pulseaudio.microphone {
-    background: rgba(36, 40, 59, 0.6);
-    color: #bb9af7;
-    padding: 0 8px;
-    margin: 4px 3px;
-    border-radius: 10px;
-}
-
-#pulseaudio.microphone:hover {
-    background: rgba(187, 154, 247, 0.15);
-    color: #c6a0f6;
-}
-
-
-/* =========================
-   AUDIO MUTED
-   ========================= */
-
-#pulseaudio.muted {
-    color: #f7768e;
-}
-
-#pulseaudio.microphone.source-muted {
-    color: #f7768e;
-}
-
-
-/* =========================
-   AUDIO + MIC GROUP
-   ========================= */
-
-#group-audio {
-    background: rgba(36, 40, 59, 0.6);
-    padding: 0 5px;
-    margin: 4px 3px;
-    border-radius: 10px;
 }
 

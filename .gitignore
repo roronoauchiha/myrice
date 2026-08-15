@@ -1,0 +1,9 @@
+# Generated/cache files
+**/.cache/
+*.backup
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key

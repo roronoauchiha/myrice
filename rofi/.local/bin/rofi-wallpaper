@@ -1,0 +1,73 @@
+#!/bin/bash
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+THUMB_DIR="$HOME/project/myrice/rofi/.cache/wallpaper-thumbs"
+MONITOR="eDP-1"
+
+mapfile -t WALLPAPERS < <(
+    find "$WALLPAPER_DIR" -maxdepth 1 -type f \
+        \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) \
+        | sort
+)
+
+[ "${#WALLPAPERS[@]}" -eq 0 ] && exit 1
+
+MENU=""
+
+for image in "${WALLPAPERS[@]}"; do
+    filename="$(basename "$image")"
+    base="${filename%.*}"
+    thumbnail="$THUMB_DIR/$base.jpg"
+
+    [ -f "$thumbnail" ] || continue
+
+    MENU+="${filename}\0icon\x1f${thumbnail}\n"
+done
+
+SELECTED="$(
+    printf '%b' "$MENU" |
+    rofi -dmenu \
+        -i \
+        -p "" \
+        -show-icons \
+        -theme-str '
+            window {
+                width: 80%;
+                height: 75%;
+            }
+
+            inputbar {
+                enabled: false;
+            }
+
+            listview {
+                columns: 3;
+                lines: 3;
+                spacing: 15px;
+                fixed-height: true;
+                scrollbar: true;
+            }
+
+            element {
+                orientation: vertical;
+                padding: 8px;
+            }
+
+            element-icon {
+                size: 180px;
+                horizontal-align: 0.5;
+            }
+
+            element-text {
+                enabled: false;
+            }
+        '
+)"
+
+[ -z "$SELECTED" ] && exit 0
+
+IMAGE="$WALLPAPER_DIR/$SELECTED"
+
+[ -f "$IMAGE" ] || exit 1
+
+hyprctl hyprpaper wallpaper "$MONITOR,$IMAGE"

@@ -1,0 +1,41 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+
+# Two-line prompt:
+# Line 1 → duration + directory
+# Line 2 → • ▸
+
+format = """
+$cmd_duration$directory
+$character"""
+
+# ─────────────────────────────────────────
+# Command duration
+# ─────────────────────────────────────────
+[cmd_duration]
+min_time = 0
+show_milliseconds = false
+format = "[](fg:#9b5de5)[ 󰪢 $duration ](fg:#ffffff bg:#9b5de5)[](fg:#9b5de5)"
+
+# ─────────────────────────────────────────
+# Directory
+# ─────────────────────────────────────────
+[directory]
+format = "[](fg:#19b89b)[ 󰉋 $path ](fg:#ffffff bg:#19b89b)[](fg:#19b89b)"
+home_symbol = "󰜥"
+truncation_length = 3
+truncate_to_repo = false
+
+
+# ─────────────────────────────────────────
+# Command prompt
+# ─────────────────────────────────────────
+
+[character]
+success_symbol = "[ ](fg:#19b89b)"
+error_symbol = "[ ](fg:#ff5c7a)"
+vimcmd_symbol = "[ ](fg:#19b89b)"
+
+
+

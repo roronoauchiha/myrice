@@ -1,44 +1,68 @@
 * {
-    background-color: #1e1e2e;
-    text-color: #cdd6f4;
+    bg:        #0b0d12;
+    bg-alt:    #12151c;
+    bg-hover:  #191d27;
+
+    fg:        #e6eaf2;
+    fg-muted:  #9299aa;
+
+    accent:    #a8b8ff;
+    border:    #252b38;
 }
 
+
 window {
-    width: 600px;
-    background-color: #1e1e2e;
+    background-color: @bg;
+    border: 2px;
+    border-color: @border;
+    border-radius: 14px;
 }
 
 mainbox {
-    children: [ inputbar, listview ];
+    background-color: transparent;
+    padding: 12px;
 }
 
 inputbar {
-    children: [ prompt, entry ];
+    background-color: @bg-alt;
+    border: 1px;
+    border-color: @border;
+    border-radius: 10px;
     padding: 10px;
-}
-
-prompt {
-    text-color: #cba6f7;
 }
 
 entry {
-    text-color: #cdd6f4;
+    text-color: @fg;
+}
+
+prompt {
+    text-color: @accent;
 }
 
 listview {
-    lines: 6;
-    spacing: 5px;
+    background-color: transparent;
+    spacing: 6px;
+    padding: 8px 0px;
 }
 
 element {
+    background-color: transparent;
+    text-color: @fg;
+    border-radius: 9px;
     padding: 10px;
 }
 
-element-text {
-    text-color: #cdd6f4;
+element selected {
+    background-color: @bg-hover;
+    text-color: @fg;
+    border: 1px;
+    border-color: @accent;
 }
 
-element selected.normal {
-    background-color: #cba6f7;
-    text-color: #1e1e2e;
+element-text {
+    text-color: inherit;
+}
+
+element-icon {
+    size: 28px;
 }

@@ -5,30 +5,34 @@
     "height": 30,
     "spacing": 6,
 
+
+    // ═════════════════════════════════════
+    // MODULE LAYOUT
+    // ═════════════════════════════════════
+
     "modules-left": [
         "hyprland/workspaces"
     ],
 
     "modules-center": [
         "cava",
-	"clock"
+        "idle_inhibitor",
+        "clock"
+    ],
+
+    "modules-right": [
+        "group/sysinfo",
+        "group/network",
+        "group/audio",
+        "group/powerinfo",
+        "custom/notifications",
+        "custom/power"
     ],
 
 
-"modules-right": [
-    "group/sysinfo",
-    "group/network",
-    "pulseaudio",
-    "pulseaudio#microphone",
-    "idle_inhibitor",
-    "battery",
-    "custom/notifications",
-    "custom/power"
-],
-
-    // ─────────────────────────
+    // ═════════════════════════════════════
     // WORKSPACES + OPEN APPS
-    // ─────────────────────────
+    // ═════════════════════════════════════
 
     "hyprland/workspaces": {
         "disable-scroll": false,
@@ -47,6 +51,8 @@
             "class<firefox>": "",
             "class<google-chrome>": "",
             "class<chromium>": "",
+// 	    "class<brave-browser>": "🦁 ",
+            "class<tor browser>": " ",
 
             "class<org.telegram.desktop>": "",
             "class<discord>": "",
@@ -56,20 +62,27 @@
 
             "class<dolphin>": "",
             "class<org.kde.dolphin>": "",
+	    "class<steam>": "",
+            "class<android-studio>": "",
+            "class<studio>": "",
+	    "class<kdeconnect>": "",
+            "class<org.kde.kdeconnect>": "",
 
             "class<mpv>": "󰐹",
             "class<vlc>": "󰕼"
         }
     },
 
-    // ─────────────────────────
+
+    // ═════════════════════════════════════
     // CAVA
-    // ─────────────────────────
+    // ═════════════════════════════════════
 
     "cava": {
         "framerate": 30,
         "autosens": 1,
         "bars": 8,
+
         "lower_cutoff_freq": 50,
         "higher_cutoff_freq": 10000,
 
@@ -77,7 +90,6 @@
         "source": "auto",
 
         "stereo": true,
-
         "bar_delimiter": 0,
 
         "format-icons": [
@@ -92,11 +104,19 @@
         ]
     },
 
-       "clock": {
+
+    // ═════════════════════════════════════
+    // CLOCK
+    // ═════════════════════════════════════
+
+    "clock": {
         "interval": 1,
-        "format": "{:%I:%M %p}",
+
+        "format": " {:%I:%M %p}",
+        "format-alt": " {:%R 󰃭 %d·%m·%y}",
+
         "rotate": 0,
-        "format-alt": "{:%R %d·%m·%y}",
+
         "tooltip-format": "<span>{calendar}</span>",
 
         "calendar": {
@@ -122,9 +142,10 @@
     },
 
 
-    // ─────────────────────────
+    // ═════════════════════════════════════
     // SYSTEM INFO
-    // ─────────────────────────
+    // CPU / RAM / DISK
+    // ═════════════════════════════════════
 
     "group/sysinfo": {
         "orientation": "horizontal",
@@ -146,7 +167,7 @@
     },
 
     "custom/cpu-icon": {
-        "format": "",
+        "format": " ",
         "tooltip": false
     },
 
@@ -156,7 +177,8 @@
     },
 
     "custom/memory-icon": {
-        "format": "󰾅",
+        "format": "󰾅 ",
+        "max-length": 10,
         "tooltip": false
     },
 
@@ -164,27 +186,31 @@
         "interval": 2,
         "format": "{used}GB",
         "max-length": 10,
+
         "tooltip": true,
         "tooltip-format": " {used:0.1f}GB/{total:0.1f}GB"
     },
 
     "custom/disk-icon": {
-        "format": "",
+        "format": " ",
         "tooltip": false
     },
 
     "disk": {
         "interval": 30,
-        "format": "{free}",
+
+        "format": " {free}",
         "path": "/",
+
         "tooltip": true,
         "tooltip-format": "Storage - {used} used out of {total} on {path} ({percentage_used}%)"
     },
 
 
-    // ─────────────────────────
+    // ═════════════════════════════════════
     // NETWORK
-    // ─────────────────────────
+    // WIFI / ETHERNET + SPEED
+    // ═════════════════════════════════════
 
     "group/network": {
         "orientation": "horizontal",
@@ -205,36 +231,105 @@
         "format-wifi": "󰤨 {essid}",
         "format-ethernet": "󰈀 {ifname}",
         "format-disconnected": "󰤭",
+
         "tooltip-format": "{ifname}: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}"
     },
 
     "network#speed": {
         "interval": 1,
+
         "format": "󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+
         "tooltip": false
     },
 
 
-    // ─────────────────────────
-    // CAFFEINE
-    // ─────────────────────────
+    // ═════════════════════════════════════
+    // AUDIO
+    // SOUND + MICROPHONE
+    // ═════════════════════════════════════
 
-    "idle_inhibitor": {
-        "format": "{icon}",
+    "group/audio": {
+        "orientation": "horizontal",
 
-        "format-icons": {
-            "activated": "󰅶",
-            "deactivated": "󰾪"
+        "drawer": {
+            "transition-duration": 300,
+            "click-to-reveal": true,
+            "transition-left-to-right": false
         },
 
-        "tooltip-format-activated": "Caffeine: ON",
-        "tooltip-format-deactivated": "Caffeine: OFF"
+        "modules": [
+            "custom/audio-icon",
+            "pulseaudio",
+            "pulseaudio#microphone"
+        ]
+    },
+
+    "custom/audio-icon": {
+        "format": "󰕾 ",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 Muted",
+
+        "tooltip": false,
+
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "wpctl status",
+
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭 Muted",
+
+        "tooltip": false,
+
+        "on-click": "~/.local/bin/mic.sh toggle",
+        "on-scroll-up": "~/.local/bin/mic.sh up",
+        "on-scroll-down": "~/.local/bin/mic.sh down"
     },
 
 
-    // ─────────────────────────
+    // ═════════════════════════════════════
     // BATTERY
-    // ─────────────────────────
+    // BATTERY + BRIGHTNESS
+    // ═════════════════════════════════════
+
+    "group/powerinfo": {
+        "orientation": "horizontal",
+
+        "drawer": {
+            "transition-duration": 300,
+            "click-to-reveal": true,
+            "transition-left-to-right": false
+        },
+
+        "modules": [
+            "custom/battery-icon",
+            "battery",
+            "backlight"
+        ]
+    },
+
+    "custom/battery-icon": {
+        "format": "󰂂 ",
+        "tooltip": false
+    },
 
     "battery": {
         "interval": 5,
@@ -262,10 +357,36 @@
         ]
     },
 
+    "backlight": {
+        "format": "󰃟 {percent}%",
 
-    // ─────────────────────────
+        "tooltip": false,
+
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+
+    // ═════════════════════════════════════
+    // CAFFEINE
+    // ═════════════════════════════════════
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰾪"
+        },
+
+        "tooltip-format-activated": "Caffeine: ON",
+        "tooltip-format-deactivated": "Caffeine: OFF"
+    },
+
+
+    // ═════════════════════════════════════
     // NOTIFICATIONS
-    // ─────────────────────────
+    // ═════════════════════════════════════
 
     "custom/notifications": {
         "format": "󰂚",
@@ -282,48 +403,15 @@
     },
 
 
-    // ─────────────────────────
+    // ═════════════════════════════════════
     // POWER / ROFI
-    // ─────────────────────────
+    // ═════════════════════════════════════
 
     "custom/power": {
         "format": "󰐥",
         "tooltip": "Power menu",
 
         "on-click": "bash -c 'choice=$(printf \"󰐥 Shutdown\\n󰜉 Reboot\\n󰍃 Logout\\n󰒲 Suspend\" | rofi -dmenu -i -p \"Power\"); case \"$choice\" in *Shutdown) systemctl poweroff ;; *Reboot) systemctl reboot ;; *Logout) hyprctl dispatch exit ;; *Suspend) systemctl suspend ;; esac'"
-    },
-
-// ─────────────────────────
-// AUDIO
-// ─────────────────────────
-
-"pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰖁 Muted",
-        "tooltip": false,
-
-        "format-icons": {
-            "default": [
-                "󰕿",
-                "󰖀",
-                "󰕾"
-            ]
-        },
-
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-click-right": "wpctl status",
-        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-    },
-
-    "pulseaudio#microphone": {
-        "format": "󰍬 {format_source}",
-        "format-source": "{volume}%",
-        "format-source-muted": "󰍭 Muted",
-        "tooltip": false,
-
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
     }
 }
+

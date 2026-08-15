@@ -1,0 +1,27 @@
+#!/bin/bash
+
+case "$1" in
+    apps)
+        rofi -show drun
+        ;;
+
+    files)
+        rofi -show filebrowser
+        ;;
+
+    commands)
+        rofi -show run
+        ;;
+
+    all)
+        rofi -show drun
+        ;;
+
+    wallpapers)
+        "$HOME/.local/bin/rofi-wallpaper"
+        ;;
+
+    *)
+        rofi -show drun
+        ;;
+esac

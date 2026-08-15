@@ -1,70 +1,245 @@
+/*
+ * ═════════════════════════════════════
+ * ROFI — TOKYO NIGHT GLASS
+ * ═════════════════════════════════════
+ */
+
 * {
     font: "JetBrainsMono Nerd Font 11";
 
-    background: #1e1e2e;
-    foreground: #cdd6f4;
+    /* Main colors */
+    background: #1a1b26;
+    surface: #24283b;
 
-    selected-background: #cba6f7;
-    selected-foreground: #1e1e2e;
+    foreground: #c0caf5;
+    muted: #565f89;
 
-    active-background: #313244;
-    active-foreground: #cdd6f4;
-
-    urgent-background: #f38ba8;
-    urgent-foreground: #1e1e2e;
+    /* Accent colors */
+    blue: #7aa2f7;
+    purple: #bb9af7;
+    cyan: #7dcfff;
+    green: #9ece6a;
+    yellow: #e0af68;
+    red: #f7768e;
 }
+
+
+/* ═════════════════════════════════════
+ * WINDOW
+ * ═════════════════════════════════════ */
 
 window {
     width: 600px;
-    padding: 20px;
-    background-color: @background;
-    border: 2px;
-    border-color: #cba6f7;
+
+    padding: 18px;
+
+    background-color: #1a1b26e6;
+
+    border: 1px;
+    border-color: #7aa2f740;
+
+    border-radius: 14px;
 }
+
+
+/* ═════════════════════════════════════
+ * MAIN BOX
+ * ═════════════════════════════════════ */
 
 mainbox {
-    spacing: 15px;
-    children: [ inputbar, listview ];
+    spacing: 12px;
+
+    children: [
+        inputbar,
+        listview
+    ];
 }
+
+
+/* ═════════════════════════════════════
+ * SEARCH BAR
+ * ═════════════════════════════════════ */
 
 inputbar {
-    padding: 12px;
-    background-color: #313244;
-    children: [ prompt, entry ];
+    padding: 11px 14px;
+
+    background-color: #24283bcc;
+
+    border: 1px;
+    border-color: #7aa2f726;
+
+    border-radius: 10px;
+
+    children: [
+        prompt,
+        entry
+    ];
 }
+
+
+/* Search prompt */
 
 prompt {
-    text-color: #cba6f7;
+    padding: 0 8px 0 0;
+
+    text-color: #7aa2f7;
 }
+
+
+/* Search text */
 
 entry {
-    text-color: @foreground;
+    text-color: #c0caf5;
+
+    placeholder: "Search...";
+    placeholder-color: #565f89;
 }
+
+
+/* ═════════════════════════════════════
+ * APPLICATION LIST
+ * ═════════════════════════════════════ */
 
 listview {
-    spacing: 5px;
+    spacing: 4px;
+
     lines: 7;
     columns: 1;
+
+    fixed-height: false;
+
+    scrollbar: true;
+
+    background-color: transparent;
 }
+
+
+/* ═════════════════════════════════════
+ * NORMAL ITEM
+ * ═════════════════════════════════════ */
 
 element {
-    padding: 10px;
-    spacing: 10px;
+    padding: 9px 12px;
+
+    spacing: 12px;
+
+    border-radius: 9px;
+
+    background-color: transparent;
 }
+
+
+/* Normal text */
 
 element-text {
-    text-color: @foreground;
+    padding: 2px;
+
+    text-color: #c0caf5;
 }
+
+
+/* Icons */
 
 element-icon {
-    size: 32px;
+    size: 28px;
+
+    padding: 2px;
+
+    background-color: transparent;
 }
+
+
+/* ═════════════════════════════════════
+ * SELECTED ITEM — GLASS
+ * ═════════════════════════════════════ */
 
 element selected {
-    background-color: @selected-background;
+    background-color: #7aa2f72e;
+
+    border: 1px;
+    border-color: #7aa2f773;
+
+    border-radius: 9px;
 }
 
+
+/* Selected text */
+
 element selected element-text {
-    text-color: @selected-foreground;
+    text-color: #c0caf5;
+}
+
+
+/* Selected icon */
+
+element selected element-icon {
+    background-color: transparent;
+}
+
+
+/* ═════════════════════════════════════
+ * ACTIVE ITEM
+ * ═════════════════════════════════════ */
+
+element active {
+    background-color: #24283b59;
+
+    border-radius: 9px;
+}
+
+element active element-text {
+    text-color: #c0caf5;
+}
+
+
+/* ═════════════════════════════════════
+ * URGENT ITEM
+ * ═════════════════════════════════════ */
+
+element urgent {
+    background-color: #f7768e2e;
+
+    border: 1px;
+    border-color: #f7768e66;
+
+    border-radius: 9px;
+}
+
+element urgent element-text {
+    text-color: #f7768e;
+}
+
+
+/* ═════════════════════════════════════
+ * SCROLLBAR
+ * ═════════════════════════════════════ */
+
+scrollbar {
+    width: 4px;
+
+    handle-width: 4px;
+
+    border: 0;
+
+    handle-color: #7aa2f7;
+
+    background-color: #24283b59;
+}
+
+
+/* ═════════════════════════════════════
+ * MESSAGE
+ * ═════════════════════════════════════ */
+
+message {
+    padding: 10px;
+
+    background-color: #24283b99;
+
+    border-radius: 8px;
+}
+
+textbox {
+    text-color: #565f89;
 }
 
